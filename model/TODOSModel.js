@@ -38,6 +38,10 @@ const addTODO = async(newTODO)=>{
 const attTODO = async (dataAtt)=>{
     let TODOS = await getData();
 
+    if(!TODOS.filter((todo) => {return todo.id === dataAtt.id})){
+        return 0;
+    }
+
     TODOS = TODOS.map((todo) => {
         if (todo.id === dataAtt.id )
             todo.completed = dataAtt.completed;

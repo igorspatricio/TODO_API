@@ -50,7 +50,9 @@ const putTODO = (req, res) =>{
         completed: req.body.completed,
     }
     model.attTODO(attData).then(result =>{
-        res.status(200).json(result)
+        if(!result)
+            return res.status(404).json({msg: "Id invalido!"});
+        return res.status(200).json(result)
     })
 }
 
