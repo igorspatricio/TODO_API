@@ -2,7 +2,7 @@ const { readFile, writeFile} = require('fs').promises;
 const path  = require('path');
 
 const getData = async ()=>{
-    const TODOS =  await readFile(path.join(__dirname, "./TODOS.json"))
+    const TODOS =  await readFile(path.join(__dirname, "../data/TODOS.json"))
     return  JSON.parse(TODOS);
 }
 
@@ -27,7 +27,7 @@ const addTODO = async(newTODO)=>{
 
     TODOS.push(newTODO);
     await writeFile(
-        path.join(__dirname, "./TODOS.json"),
+        path.join(__dirname, "../data/TODOS.json"),
         JSON.stringify(TODOS),
         'utf8');
 
