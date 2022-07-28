@@ -88,7 +88,6 @@ describe('Todos API', ()=>{
             expect(response.body).toEqual(
                 expect.objectContaining({
                     msg: expect.any(String),
-                    completed: expect.any(Boolean),
                 })
             )
         })

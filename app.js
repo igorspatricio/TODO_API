@@ -13,7 +13,6 @@ app.use(express.json())
 app.use(logger);
 
 //routes
-
 app.use('/', require('./routes/root.js'));
 app.use('/todos', require('./routes/TODOS'));
 
@@ -31,5 +30,4 @@ app.all('*', (req, res) =>{
 })
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
-
 module.exports = app;
