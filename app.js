@@ -4,10 +4,11 @@ const app = express()
 const PORT = process.env.PORT || 3000;
 
 //middleware
+const logger = require('./middleware/logger.js');
 const cors = require('cors')
 const path = require('path')
-const logger = require('./middleware/logger.js');
 
+app.use(cors(require('./config/corsOptions.js')))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(logger);
@@ -15,7 +16,6 @@ app.use(logger);
 //routes
 app.use('/', require('./routes/root.js'));
 app.use('/todos', require('./routes/TODOS'));
-
 
 app.all('*', (req, res) =>{
     res.status(404)

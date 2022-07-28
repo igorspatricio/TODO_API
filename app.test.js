@@ -92,4 +92,49 @@ describe('Todos API', ()=>{
             )
         })
     });
+
+    it('PUT /todos/:id --> ATT a todo as comleted/imcomplet', () =>{
+        return request(app)
+        .put('/todos/1')
+        .send({completed: true})
+        .expect(200)
+        .then(response =>{
+            expect(response.body).toEqual(
+                expect.objectContaining({
+                    id: 1,
+                    name: expect.any(String),
+                    completed: expect.any(Boolean),
+                })
+            )
+        })
+    })
+
+
+    it('DEL /todos/:id --> DEL a todo', () =>{
+        return request(app)
+        .put('/todos/2')
+        .expect(200)
+        .then(response =>{
+            expect(response.body).toEqual(
+                expect.objectContaining({
+                    id: 2,
+                    name: expect.any(String),
+                    completed: expect.any(Boolean),
+                })
+            )
+        })
+    })
+
+    it('DEL /todos/:id --> Try to del a invalid todo', () =>{
+        return request(app)
+        .put('/todos/2')
+        .expect(404)
+        .then(response =>{
+            expect(response.body).toEqual(
+                expect.objectContaining({
+                    msg: expect.any(String)
+                })
+            )
+        })
+    })
 });
