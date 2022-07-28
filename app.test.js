@@ -20,9 +20,9 @@ describe('Todos API', ()=>{
             })
     });
 
-    it('GET /todos/id --> speciftc todo', () =>{
+    it('GET /todos/:id --> speciftc todo', () =>{
         return request(app)
-            .get('/todo/1')
+            .get('/todos/1')
             .expect('Content-Type', /json/)
             .expect(200)
             .then((response => {
@@ -35,16 +35,29 @@ describe('Todos API', ()=>{
             }))
     });
 
-    it('GET /todos/id --> 404 not found', () =>{
+    it('GET /todos/id --> 400 invalid type', () =>{
         return request(app)
-        .get('/todo/as')
+        .get('/todos/as')
+        .expect('Content-Type', /json/)
+        .expect(400)
+        .then((response => {
+            expect(response.body).toEqual(
+                expect.objectContaining({
+                    msg: expect.any(String),
+                })
+            )
+        }))
+    });
+
+    it('GET /todos/id --> 404 not found invalid id', () =>{
+        return request(app)
+        .get('/todos/999999')
         .expect('Content-Type', /json/)
         .expect(404)
         .then((response => {
             expect(response.body).toEqual(
                 expect.objectContaining({
                     msg: expect.any(String),
-                    completed: expect.any(Boolean),
                 })
             )
         }))
