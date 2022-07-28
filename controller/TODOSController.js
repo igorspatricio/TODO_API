@@ -44,6 +44,15 @@ const postTODO = (req, res) =>{
 
 }
 
+const putTODO = (req, res) =>{
+    const attData = {
+        id: Number(req.params.id),
+        completed: req.body.completed,
+    }
+    model.attTODO(attData).then(result =>{
+        res.status(200).json(result)
+    })
+}
 
  
 
@@ -51,5 +60,6 @@ const postTODO = (req, res) =>{
 module.exports =  {
     getAllTODOS,
     getTODOById,
-    postTODO
+    postTODO,
+    putTODO
 };

@@ -35,8 +35,27 @@ const addTODO = async(newTODO)=>{
     
 }
 
+const attTODO = async (dataAtt)=>{
+    let TODOS = await getData();
+
+    TODOS = TODOS.map((todo) => {
+        if (todo.id === dataAtt.id )
+            todo.completed = dataAtt.completed;
+        return todo;
+    })
+
+    await writeFile(
+        path.join(__dirname, "../data/TODOS.json"),
+        JSON.stringify(TODOS),
+        'utf8');
+    
+    
+    return TODOS.filter((todo) => {return todo.id === dataAtt.id})[0]
+}
+
 module.exports = {
     getData,
     getById,
-    addTODO
+    addTODO,
+    attTODO
 }

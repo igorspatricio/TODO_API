@@ -103,7 +103,7 @@ describe('Todos API', ()=>{
                 expect.objectContaining({
                     id: 1,
                     name: expect.any(String),
-                    completed: expect.any(Boolean),
+                    completed: true,
                 })
             )
         })
@@ -112,12 +112,12 @@ describe('Todos API', ()=>{
 
     it('DEL /todos/:id --> DEL a todo', () =>{
         return request(app)
-        .put('/todos/2')
+        .put('/todos/3')
         .expect(200)
         .then(response =>{
             expect(response.body).toEqual(
                 expect.objectContaining({
-                    id: 2,
+                    id: 3,
                     name: expect.any(String),
                     completed: expect.any(Boolean),
                 })
