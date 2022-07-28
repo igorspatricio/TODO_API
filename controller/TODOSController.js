@@ -56,6 +56,16 @@ const putTODO = (req, res) =>{
     })
 }
 
+const delTODO = (req, res) =>{
+    const id = Number(req.params.id)
+
+    model.removeTODO(id).then(result =>{
+        if(!result)
+            return res.status(404).json({msg: "Id invalido!"});
+        return res.status(200).json(result)
+    })
+}
+
  
 
 
@@ -63,5 +73,6 @@ module.exports =  {
     getAllTODOS,
     getTODOById,
     postTODO,
-    putTODO
+    putTODO,
+    delTODO
 };

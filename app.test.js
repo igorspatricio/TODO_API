@@ -112,7 +112,7 @@ describe('Todos API', ()=>{
 
     it('DEL /todos/:id --> DEL a todo', () =>{
         return request(app)
-        .put('/todos/3')
+        .delete('/todos/3')
         .expect(200)
         .then(response =>{
             expect(response.body).toEqual(
@@ -127,7 +127,7 @@ describe('Todos API', ()=>{
 
     it('DEL /todos/:id --> Try to del a invalid todo', () =>{
         return request(app)
-        .put('/todos/2')
+        .delete('/todos/999999')
         .expect(404)
         .then(response =>{
             expect(response.body).toEqual(

@@ -9,6 +9,7 @@ router.route('/')
 router.route('/:id')
     .get(controller.getTODOById)
     .put(controller.putTODO)
+    .delete(controller.delTODO)
 
 
 

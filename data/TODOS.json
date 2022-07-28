@@ -2,14 +2,11 @@
     {
         "id": 1,
         "name": "tirar o lixo",
-        "completed": false
+        "completed": true
     },
     {
         "id": 2,
-        "name": "Alguma coisa"
-    },
-    {
-        "name": "tirar o lixo",
-        "id": 3
+        "name": "Alguma coisa",
+        "completed": false
     }
 ]
